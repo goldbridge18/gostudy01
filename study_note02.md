@@ -38,9 +38,15 @@ go的数组属于值类型，在默认情况下值传递，因此会进行值拷
 	}
 ```
 2、切片 slice
-
+```
 切片可以简单理解为动态的数组，但是和数组是有区别的。
 切片是数组的引用，因此切片是一个引用类型。
 切片的长度是可以变化的，是一个动态变化的数组
+````
+语法格式： 
 
-语法格式： var 切片名 []类型
+var 切片名 []类型  
+
+var slice := intarr[startIndex:endIndex]  //切片的取值范围是左闭右开
+
+![tupian](https://github.com/goldbridge18/imagefile/blob/master/2020-06-10%2000-20-13%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
