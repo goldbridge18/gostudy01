@@ -7,5 +7,6 @@ func main() {
 	fmt.Println("zhong guo gong chan dang wan sui !")
 
 	demoSlice()
+	demoArray()
 
 }

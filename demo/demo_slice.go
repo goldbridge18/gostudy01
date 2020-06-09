@@ -22,7 +22,7 @@ func demoSlice() {
 	for i := 0; i < len(arr1); i++ {
 		fmt.Println("arr1 array key is ", i, "values is", arr[i])
 	}
-	//for -range  遍历数组  k,v := range arr ,k和v可以用_表示忽略
+	//for -range  遍历数组  k,v := range arr ,k和v可以用_表示站位符忽略
 
 	//k和v的作用域只能在for循环中使用
 	for k, v := range arr {
