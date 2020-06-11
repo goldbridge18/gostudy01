@@ -172,7 +172,7 @@ endtime := time.Now()
 fmt.Println(endtime)
 ```
 17、内置函数 buildin function
-
+```
 len:用来求长度
 new：用来分配内存，主要用来分配值类型，比如int、float32、struct等返回的时指针
 
@@ -184,7 +184,7 @@ fmt.Printf("num的类型：%T，num的值是：%v，num的指针地址：%v，nu
 
 
 make：用来分配内存，主要用来分配引用类型，如channel、map、slice
-
+```
 18、错误处理机制 go没有try...catch...finally go中引入的处理方式为：defer、panic、recover
 
 func test(){ //使用defer+recover来捕捉和处理异常 defer func (){ err := recover() //recover()内置函数，可以捕捉异常 if err !=nil{ //说明捕捉到的错误 fmt.Println("error : ",err) } }() num1 := 10 num2 := 0 res := num1/num2 fmt.Println("res :",res)
