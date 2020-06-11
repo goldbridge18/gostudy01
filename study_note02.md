@@ -49,4 +49,69 @@ var 切片名 []类型
 
 var slice := intarr[startIndex:endIndex]  //切片的取值范围是左闭右开
 
-![tupian](https://github.com/goldbridge18/imagefile/blob/master/2020-06-10%2000-20-13%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
+slice底层的数据结构可以理解为一个结构体
+
+type slice struct{
+
+	ptr *[2]int
+	len int
+	cap int
+}
+
+![slice内存分布图](https://github.com/goldbridge18/imagefile/blob/master/goimage/2020-06-11%2023-27-14%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
+
+3、切片的使用方式：
+
+第一种：定义一个切片，然后让切片引用一个已创建的数组
+```
+var intarr [5]int = [...]int{1, 2, 3, 4, 5}
+
+	slice := intarr[1:3]
+	for k, v := range slice {
+		fmt.Println("slice  key is ", k, "  slice values is ", v)
+	}
+	fmt.Println("intarr ", intarr)
+	fmt.Println("slice meta :", slice)
+	fmt.Println("slice length is ", len(slice))
+	fmt.Println("slice 容量：", cap(slice)) //容量一般是切片大小的2倍，但是它是可以动态增加的
+
+	fmt.Println("intarr[1] 的地址", &intarr[1])
+	fmt.Println("slice[0]", &slice[0])
+```
+
+第二种：通过make来创建切片
+
+基本语法：var 切片名 []type = make([]type,len,[cap])
+说明：type：数据类型；len：大小；cap：容量，可选。
+
+```
+	//make使用
+	var slice []float64 = make([]float64, 10, 20)
+	slice[6] = 100
+	slice[3] = 99
+	fmt.Println("slice ", slice)  //返回数组 [0 0 0 99 0 0 100 0 0 0]，这个数组是对外不可见的。
+	fmt.Println("cap is size ", cap(slice))
+
+
+```
+
+![make内存分布](https://github.com/goldbridge18/imagefile/blob/master/goimage/2020-06-11%2023-49-09%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
+
+
+a、通过make方式创建分片可以指定切片大小和容量
+b、如果没有切片的各个元素赋值，那么就会使用默认值(int返回0，float返回0，string返回""，bool返回false)
+c、通过make创建的切片对应的数组是由make底层维护，对外不可见，只能通过slice去访问各个元素。
+
+第三种：定义一个切片，直接指定具体数组，使用原理类似make方式
+
+
+切片使用注意事项：
+	1.切片初始化时 var slice = arr[startindex:endindex] ,左开右闭
+	2.切片初始化时，仍然不能越界。在[0-len(arr)]范围之间，但是可以动态增长。
+	3.书写：
+				var slice = arr[0:endindex]可以简写 var slice = arr[:endindex]
+				var slice = arr[startindex:len(arr)] 可以简写 var slice =arr[startindex:]
+				var slice = arr[0:len(arr)] ---->var slice = arr[:]
+	4.cap是一个内置函数，用于统计切片的容量，即最大可以放入多少元素。
+	5.切片可以再切片
+	6.切片定义之后，不能使用，因为本身是一个空，需要让其引用到一个数组或者make一个空间。
