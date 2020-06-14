@@ -31,3 +31,48 @@ slice：size指定了其长度。该切片的容量等于其长度。切片支�
 map: 初始化分配的创建取决于size，但产生的映射为0.size可以省略，这种情况下会分配一个小的起始大小。
 
 channel：通道的缓存根据指定的缓存容量初始化。若size为零或被省略，该信道即为无缓存的。
+
+
+
+	//多个map声明使用
+```
+	studentMap := make(map[string]map[string]string)
+
+	studentMap["NO.001"] = make(map[string]string)
+	studentMap["NO.001"]["name"] = "tom"
+	studentMap["NO.001"]["age"] = "19"
+	studentMap["NO.001"]["sex"] = "m"
+```
+
+
+2、map的增删改查
+
+delete (mapname,mapkey) //删除map元素，如果不存在，不会操作，也不报错
+
+```
+//删除所有的key
+//1.遍历所有的key 逐个删除
+//2.直接make一个新空间
+
+	studentMap = make(map[string]map[string]string)
+	fmt.Println(studentMap)
+    ```
+
+```
+	// 查找
+	val, ok := studentMap["NO.002"]
+
+	fmt.Println("查找： ", val, ok) // 如果存在ok 等于true
+	if ok {
+		fmt.Println("查找的结果：", val)
+	} else {
+		fmt.Println("not found")
+	}
+
+```
+
+3、map遍历
+
+map只能使用个 for-range遍历，因为map的key可能有不为数字或者数字不连续
+
+4、map的切片
