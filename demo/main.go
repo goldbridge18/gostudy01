@@ -11,6 +11,7 @@ func main() {
 	//demoMake()
 	//demoAppend()
 	//run()
-	runFind()
+	//runFind()
+	demoMap()
 
 }
