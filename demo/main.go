@@ -8,6 +8,9 @@ func main() {
 
 	//demoSlice()
 	//demoArray()
-	demoMake()
+	//demoMake()
+	//demoAppend()
+	//run()
+	runFind()
 
 }
