@@ -12,6 +12,8 @@ func main() {
 	//demoAppend()
 	//run()
 	//runFind()
-	demoMap()
+	//demoMap()
+	//demoMapSlice()
+	demoMapsort()
 
 }

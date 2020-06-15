@@ -76,3 +76,17 @@ delete (mapname,mapkey) //删除map元素，如果不存在，不会操作，也
 map只能使用个 for-range遍历，因为map的key可能有不为数字或者数字不连续
 
 4、map的切片
+
+var mapslice = []map[type]type  
+
+5、map 排序
+
+map的排序，是先将key进行排序，然后根据key值遍历输出即可
+
+6、使用细节
+
+map是引用类型，遵守引用类型的传递机制，一个函数接收map，修改后，会直接修改原来的值
+
+map的容量达到后，继续加入元素会自动扩容，map能动态的增长的key-value
+
+map的value也经常使用struct类型。
