@@ -43,3 +43,33 @@ var person *Person = &Person{} //结构体指针
 
 结构体指针的字段访问方式，标准方式：(*ptr).field = _简化方式：ptr.field= _
 
+3、
+
+结构体内的字段，在内存中分配的地址是连续的
+
+
+4、
+
+结构体进行type重定义，相当于取别名，golang认为是新的数据类型，需要相互间强制转换。
+
+//Stu 和Stu01 字段必须保持一致，才能相互转化
+type Stu struct{
+    name string
+}
+
+type Stu01 struct{
+    name string
+}
+
+
+func main(){
+
+    var stu Stu
+    var stu01 Stu01
+
+    stu = Stu(stu01)//强制转换
+}
+
+5、
+
+struct的每个字段上，可以写上一个tag，该tag可以通过反射机制获取，常见的场景就是序列化和反序列化。
