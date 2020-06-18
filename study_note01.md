@@ -177,9 +177,13 @@ len:用来求长度
 new：用来分配内存，主要用来分配值类型，比如int、float32、struct等返回的时指针
 
 num := new(int)
+
 fmt.Printf("num的类型：%T，num的值是：%v，num的指针地址：%v，num指向的值%v", num, num, &num, *num)
+
 //num的类型：*int，num的值是：0xc000018128，num的指针地址：0xc00000e030，num指向的值0
+
 // 0xc000018128是num指针的地址；0xc00000e030是指针指向值的地址 
+
 //0是指针指向的值。如果指针没有值则为默认0
 
 

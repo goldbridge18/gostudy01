@@ -14,6 +14,8 @@ func main() {
 	//runFind()
 	//demoMap()
 	//demoMapSlice()
-	demoMapsort()
+	//demoMapsort()
+	//demoStructDetails()
+	demoStructSay()
 
 }
