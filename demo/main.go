@@ -16,6 +16,9 @@ func main() {
 	//demoMapSlice()
 	//demoMapsort()
 	//demoStructDetails()
-	demoStructSay()
+	//demoStructSay()
+
+	//demoFangfa()
+	demoMethodedetails()
 
 }
