@@ -21,6 +21,8 @@ func demoMethodedetails() {
 	school.Level = 2
 
 	fmt.Println(school)
+	//如果实现了 *School 类型的string方法，就会自动调用string
+	fmt.Println(&school) //传入一个地址
 	fmt.Println(school.String())
 
 }

@@ -25,6 +25,6 @@
 
     方法首字母大写是public  小写是private
 
-    
+    如果一个类型实现了一个String() 方法，那么fmt.Println默认会调用这个变量的String() 进行输出
 
     
