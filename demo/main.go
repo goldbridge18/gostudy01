@@ -26,6 +26,10 @@ func main() {
 
 	//demoInterface()
 
-	demoInterfaceDetails01()
+	//demoInterfaceDetails01()
+
+	demoInterface02()
+
+	//demoInterfaceduotai()
 
 }
