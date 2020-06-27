@@ -31,8 +31,10 @@ func main() {
 	//demoInterface02()
 
 	//demoInterfaceduotai()
-	demoAssert()
+	//demoAssert()
 
-	demoAssertdetails01()
+	//demoAssertdetails01()
+
+	demoAssertdetail02()
 
 }
