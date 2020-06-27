@@ -73,3 +73,41 @@ func main(){
 5、
 
 struct的每个字段上，可以写上一个tag，该tag可以通过反射机制获取，常见的场景就是序列化和反序列化。
+
+
+6、结构体变量指定字段值
+
+tyep Stu struct{
+    Name string
+    Aage int
+}
+
+//方式 直接指定字段的值
+var stu1 = Stu{"hanmei",19}  //顺序必须和结构体的一致
+
+stu2 :=  Stu{"hanmei",19} //类型推导
+
+var stu3 = Stu{  //里面的字段每一行都有有","号
+    Name: "lilei",
+    Age: 19,
+}
+
+
+stu4 := Stu{  //里面的字段每一行都有有","号
+    Name: "lilei",
+    Age: 19,
+}
+
+//方式: 返回结构体的指针类型
+
+var stu5 = &Stu{ Name: "lilei",   Age: 19}  // stu5指向指针地址，地址指向结构体
+
+ stu6 := &Stu{ Name: "lilei",   Age: 19}
+
+ var stu7 = &Stu{
+     .....
+ }
+
+ stu8 := &Stu{
+     ......
+ }

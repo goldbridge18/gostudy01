@@ -19,6 +19,13 @@ func main() {
 	//demoStructSay()
 
 	//demoFangfa()
-	demoMethodedetails()
+	//demoMethodedetails()
+
+	//demoObjectsay()
+	//demoExtends()
+
+	//demoInterface()
+
+	demoInterfaceDetails01()
 
 }
