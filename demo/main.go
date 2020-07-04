@@ -5,6 +5,7 @@ import "fmt"
 func main() {
 
 	fmt.Println("zhong guo gong chan dang wan sui !")
+	fmt.Println("--------------------------start---------------------------")
 
 	//demoSlice()
 	//demoArray()
@@ -35,6 +36,8 @@ func main() {
 
 	//demoAssertdetails01()
 
-	demoAssertdetail02()
+	//demoAssertdetail02()
 
+	//demo.demoAssertdetails01()
+	demoFfile02()
 }
