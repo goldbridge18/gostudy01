@@ -42,4 +42,5 @@ func main() {
 	//demoFfile02()
 	//demoFile02()
 	demoFlag()
+	demoGoroutine()
 }
