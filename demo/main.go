@@ -39,5 +39,7 @@ func main() {
 	//demoAssertdetail02()
 
 	//demo.demoAssertdetails01()
-	demoFfile02()
+	//demoFfile02()
+	//demoFile02()
+	demoFlag()
 }

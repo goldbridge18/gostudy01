@@ -1,7 +1,17 @@
-io/util
+io/ioutil  :隐式打开文件；ioutil.ReadFile  ioutil.WriteFile
 
-bufio
+bufio:
 
-io
+io:
 
-os
+os:
+
+os.Args 接收命令行的参数，他是一个string的切片，用来存储所有的命令行参数
+
+flag：用来解析命令行的参数
+
+例如： mysql -u root -p root
+
+encoding/json:
+
+struct\map\array--序列化---->json-------反序列化--->struct\map\array
