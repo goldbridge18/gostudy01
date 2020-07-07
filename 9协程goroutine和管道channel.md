@@ -59,3 +59,31 @@ runtime包提供和go运行时环境的互操作，如控制go程的函数
 NumCPU函数：返回本地的逻辑cpu个数
 
 GOMAXPROCS函数:设置可同时执行的最大CPU数。
+
+二、channel管道
+
+- 1.channel本质就是一个数据结构队列
+- 2.数据是先进先出【FIFO：first in first out】
+- 3.线程安全，多goroutine访问时，不需要加锁，就是说channel本身就是线程安全的
+![channel](https://github.com/goldbridge18/imagefile/blob/master/goimage/2020-07-07%2023-26-04%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
+- 4.channel是有类型的，一个string的channel只能存放string类型的数据。
+
+channel声明：
+
+语法：
+```
+var 变量 chan 数据类型
+```
+例子：
+```
+var intChan chan int(intChan用于存放int数据)
+var mapChan chan map[int]string(mapChan用于存放map[int]string类型)
+var perChan chan *Person
+```
+- 1.channel是引用类型
+- 2.channel必须初始化才能写入数据，即make后使用
+- 3.管道是有类型的intChan只能写入整数int
+```
+var intChan chan int
+intChan = make(chan int,10)
+```

@@ -41,6 +41,12 @@ func main() {
 	//demo.demoAssertdetails01()
 	//demoFfile02()
 	//demoFile02()
-	demoFlag()
-	demoGoroutine()
+	//demoFlag()
+	//demoGoroutine()
+
+	//demoGoroutine01()
+	//demoGoroutine02()
+
+	demoChannel()
+
 }
