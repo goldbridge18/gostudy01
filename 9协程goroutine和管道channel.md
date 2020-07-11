@@ -68,7 +68,7 @@ GOMAXPROCS函数:设置可同时执行的最大CPU数。
 ![channel](https://github.com/goldbridge18/imagefile/blob/master/goimage/2020-07-07%2023-26-04%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 - 4.channel是有类型的，一个string的channel只能存放string类型的数据。
 
-channel声明：
+**2.1 channel声明：**
 
 语法：
 ```
@@ -78,7 +78,7 @@ var 变量 chan 数据类型
 ```
 var intChan chan int(intChan用于存放int数据)
 var mapChan chan map[int]string(mapChan用于存放map[int]string类型)
-var perChan chan *Person
+var perChan chan *Person// 结构体
 ```
 - 1.channel是引用类型
 - 2.channel必须初始化才能写入数据，即make后使用
@@ -87,3 +87,76 @@ var perChan chan *Person
 var intChan chan int
 intChan = make(chan int,10)
 ```
+
+**2.3 channel注意事项：**
+- 1.channel中只能存放指定的数据类型
+- 2. channel的数据放满后，就不能继续放入数据
+- 3. 如果从channel取出数据后，取出的数据的位置被释放 ，可以继续放入数据
+- 4.在没有使用协程的情况下，如果channel数据取完了，再取就会报dead lock
+```
+fatal error: all goroutines are asleep - deadlock!
+```
+
+如何实现channel存放多种数据类型
+
+```
+package main
+
+import "fmt"
+
+type Cat struct {
+	Name string
+	age  int
+}
+
+func demoChannel01() {
+
+	//定义一个存放任意数据类型的channel，可以存放3个数据
+
+	//声明一个接口类型的channel
+	var allChan chan interface{} //空接口类型 的channel，接口可以存放任意数据类型
+	allChan = make(chan interface{}, 3)
+
+	//allChan := make(chan interface{}, 3) //声明一个接口类型的channel
+
+	allChan <- 100
+	allChan <- "cat007"
+
+	/*
+		var cat Cat //初始化Cat结构体
+		cat.age = 18
+		cat.Name = "008"
+	*/
+	/*
+		var cat Cat = Cat{"flower cat", 10} //初始化Cat结构体
+	*/
+	cat := Cat{"flower cat", 10}
+	allChan <- cat
+
+	//channel是先进先出，如果要取出cat的名字，就需要先把前两个取出来，才能取出Cat结构体的数据
+	<-allChan //取出数据，不赋值给任何对象
+	<-allChan
+
+	getCat := <-allChan //取出Cat结构体
+
+	fmt.Printf("getCat is %T, getCat is %v\n", getCat, getCat)
+
+	//获取cat的名字，如果使用getCat.Name直接报错
+	catName := getCat.(Cat).Name  //使用断言
+	fmt.Println("cat's name is ", catName)
+
+}
+```
+使用断言 ：catName := getCat.(Cat).Name
+
+类型断言，由于接口是一般类型，不知道具体类型，如果要转成具体类型，就需要使用类型断言。
+
+
+**2.4 channel的关闭**
+
+使用内置函数close可以关闭channel，当channel关闭后，不能继续向channel写入，但是可以读取该channel的数据。
+
+**channel遍历**
+利用for-range ，不能使用普通for循环。
+- 1. 在遍历时，如果channel没有关闭则会出现deadlock错误
+- 2. 在遍历时，如果channel已经关闭则会正常遍历数据，遍历完后，就会退出遍历。

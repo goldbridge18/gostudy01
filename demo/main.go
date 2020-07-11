@@ -47,6 +47,10 @@ func main() {
 	//demoGoroutine01()
 	//demoGoroutine02()
 
-	demoChannel()
+	//demoChannel()
+	//demoChannel01()
+	//demoChannelClose()
+
+	demoChannel02()
 
 }
