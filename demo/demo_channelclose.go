@@ -34,7 +34,7 @@ func demoChannelClose() {
 
 	//遍历时，没有关闭channel会报deadlock。因此需要使用close关闭管道
 	close(intChan71101)
-	//遍历
+	//遍历 管道
 	for v := range intChan71101 {
 		fmt.Println(v)
 	}

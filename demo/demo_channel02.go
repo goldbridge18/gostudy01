@@ -37,7 +37,7 @@ func readData(intChan chan int, exitChan chan bool) {
 
 func demoChannel02() {
 
-	// 声明channel
+	// 声明channel//
 	intChan := make(chan int, count-100)
 	exitChan := make(chan bool, 1)
 

@@ -1,12 +1,12 @@
 一、协程
 
-1、进程和线程说明
+**1、进程和线程说明**
 - 1.进程是程序在操作系统中的一次执行过程，是系统进行资源分配和调度的基本单位
 - 2.线程是进程的一个执行实例，是程序自行的最小单位，他是比进程更小的能独立运行的基本单位。
 - 3.一个进程可以创建和销毁多个线程，同一个进程中的多个线程可以并发执行。
 - 4.一个程序至少有一个进程，一个进程至少有一个线程。
 
-2、并发和并行
+**2、并发和并行**
 - 1.多线程程序在单核上运行是并发
 
     并发特点：
@@ -22,7 +22,7 @@
 ![并发和并行示意图](https://github.com/goldbridge18/imagefile/blob/master/goimage/2020-07-05%2016-04-58%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 
-3、goroutine
+**3、goroutine**
 
 go的主线程:一个go线程上，可以启多个协程。协程是轻量级的线程【编译器做优化】。
 
@@ -35,12 +35,12 @@ go协程的特点：
 协程的流程图：
 ![..](https://github.com/goldbridge18/imagefile/blob/master/goimage/2020-07-05%2018-09-30%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
-总结：
+**总结：**
 - 1.主线程是一个物理线程，直接作用在cpu上，重量级非常耗费cpu资源
 - 2.协程从主线程上开启，是轻量级的线程，是逻辑态，对资源耗费相对小。
 - 3.协程是golang的重要特点，可以轻松开启上万个协程。其他语言的并发机制是一般基于线程的，开启过多的线程，资源耗费大。
 
-4、goroutine的调度模型---MPG
+**4、goroutine的调度模型---MPG**
 
 - 1.M：操作系统的主线程（物理线程）
 - 2.P：协程执行需要的上下文
@@ -52,7 +52,7 @@ go协程的特点：
 
 ![3...](https://github.com/goldbridge18/imagefile/blob/master/goimage/2020-07-05%2018-42-30%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
-5、runtime
+**5、runtime包**
 
 runtime包提供和go运行时环境的互操作，如控制go程的函数
 
@@ -60,7 +60,7 @@ NumCPU函数：返回本地的逻辑cpu个数
 
 GOMAXPROCS函数:设置可同时执行的最大CPU数。
 
-二、channel管道
+**二、channel管道**
 
 - 1.channel本质就是一个数据结构队列
 - 2.数据是先进先出【FIFO：first in first out】
@@ -154,9 +154,50 @@ func demoChannel01() {
 
 **2.4 channel的关闭**
 
+关闭channel解决阻塞导致的deadlock
+
 使用内置函数close可以关闭channel，当channel关闭后，不能继续向channel写入，但是可以读取该channel的数据。
 
 **channel遍历**
 利用for-range ，不能使用普通for循环。
 - 1. 在遍历时，如果channel没有关闭则会出现deadlock错误
 - 2. 在遍历时，如果channel已经关闭则会正常遍历数据，遍历完后，就会退出遍历。
+
+
+channel的使用细节和注意事项：
+
+- 1.channel可以声明为只读、只写
+```
+//channel的只读、只写定义方式
+
+	//1. 默认情况，管道是双向的可读可写
+	var chan1 chan int
+	fmt.Println(chan1)
+
+	//2.声明只写的channel
+	var chan2 chan<- int
+	chan2 = make(chan int, 2)
+	chan2 <- 10
+
+	//num := <-chan2  //读取chan2的值，直接报错
+	fmt.Println(chan2)
+
+	//3.声明只读
+	var chan3 <-chan int
+	num1 := <-chan3
+	//chan3 <- 11//x写入报错
+	fmt.Println(num1)
+```
+- 2.使用select可以解决从管道取数据的阻塞问题
+
+语法：
+```
+select {
+	case v:= <-channel:
+		语句
+		.....
+		default:
+		语句
+}
+```
+- 3. goroutine中使用recover，解决协程中出现的panic，导致的程序崩溃问题

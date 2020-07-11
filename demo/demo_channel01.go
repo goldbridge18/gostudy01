@@ -42,5 +42,5 @@ func demoChannel01() {
 	//获取cat的名字，如果使用getCat.Name直接报错
 	catName := getCat.(Cat).Name //使用断言
 	fmt.Println("cat's name is ", catName)
-
+	//
 }

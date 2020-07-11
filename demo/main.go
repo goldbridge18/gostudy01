@@ -51,6 +51,9 @@ func main() {
 	//demoChannel01()
 	//demoChannelClose()
 
-	demoChannel02()
+	//demoChannel02()
+	//demoChannel03()
+	//demoChannel04()
+	demoChannel05()
 
 }
