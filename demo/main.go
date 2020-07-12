@@ -54,6 +54,10 @@ func main() {
 	//demoChannel02()
 	//demoChannel03()
 	//demoChannel04()
-	demoChannel05()
+	//demoChannel05()
+	//demoReflect01()
+	//demoReflect02()
+	//demoReflect03()
+	demoReflect04()
 
 }

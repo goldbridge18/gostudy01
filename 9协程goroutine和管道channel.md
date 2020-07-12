@@ -200,4 +200,4 @@ select {
 		语句
 }
 ```
-- 3. goroutine中使用recover，解决协程中出现的panic，导致的程序崩溃问题
+- 3.  goroutine中使用recover，解决协程中出现的panic，导致的程序崩溃问题
