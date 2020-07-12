@@ -207,3 +207,54 @@ for i := 0; i <10; i++ {
 
 error.New("错误说明")，返回一个error类型的值，表示一个错误
 panic内置函数，接收一个interface{}类型的值（也就是任何值）作为参数，可以接收error类型的变量，**输出错误信息，并退出程序**
+
+
+19\ const修饰常量
+
+- 1.常量使用const修饰
+- 2.常量在定义的时候,必须初始化赋值
+- 3.常量不能修改
+- 4.常量只能修饰bool\int\float\string
+
+语法:
+```
+const identifier [type] = value
+```
+
+常量写法:
+
+方式一
+
+```
+const (
+    a = 1
+    b = 2
+)
+```
+
+方式二:
+
+```
+const(
+    a = iota //表示给a赋值为0
+    b   //b的写法表示在a的基础上+1 ,b的值为1
+    c  //c的写法表示在b的基础上+1 ,c的值为2
+
+)
+```
+
+常量的首字母大小写,决定public还是private
+
+注意:
+
+```
+
+const(
+
+a = iota //a = 0
+b = iota //b = 1
+c , d  = iota,iota // c = 2 ;d = 2
+
+)
+```
+不换行不加1
